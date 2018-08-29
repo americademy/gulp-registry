@@ -2,12 +2,22 @@
   "name": "milk-carton",
   "version": "0.0.4",
   "description": "A task runner to create, develop, test, and deploy code",
-  "main": "main/index.js",
+  "main": "lib/index.js",
   "author": "Dave Arel <davearel@gmail.com>",
   "homepage": "http://github.com/americademy/milk-carton",
   "repository": "git://github.com/americademy/milk-carton.git",
   "license": "MIT",
   "private": false,
+  "bin": {
+     "milk": "lib/index.js"
+  },
+  "scripts": {
+     "prepare": "babel src -d lib"
+  },
+  "files": [
+     "lib",
+     "src"
+  ],
   "dependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
