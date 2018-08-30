@@ -34,5 +34,8 @@
       "undertaker-registry": "^1.0.1",
       "webpack-stream": "^4.0.2",
       "worker-loader": "^1.1.0"
+   },
+   "devDependencies": {
+      "gulp": "^4.0.0"
    }
 }
