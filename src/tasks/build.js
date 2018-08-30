@@ -1,6 +1,5 @@
 import fs  from 'fs';
 import path  from 'path';
-import plumber from 'gulp-plumber';
 import filter from 'gulp-filter';
 import rename from 'gulp-rename';
 import uglify from 'gulp-uglify';
@@ -99,9 +98,6 @@ export default function(gulp, config) {
   };
 
   return gulp.src(sourceFile)
-
-    // plumber
-    .pipe(plumber({errorHandler}))
 
     // stream webpack build
     .pipe(webpackStream(options, wpVersion))

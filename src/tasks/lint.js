@@ -1,4 +1,3 @@
-import plumber from 'gulp-plumber';
 import eslint from 'gulp-eslint';
 import {logError} from '../utility';
 
@@ -16,7 +15,6 @@ const files = [
 export default function(gulp, config) {
   // Lint a set of files
   return gulp.src(files)
-    .pipe(plumber())
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failOnError())

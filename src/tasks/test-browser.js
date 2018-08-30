@@ -1,6 +1,5 @@
 import glob from 'glob';
 import webpack from 'webpack';
-import plumber from 'gulp-plumber';
 import connect from 'gulp-connect';
 import webpackStream from 'webpack-stream';
 
@@ -19,12 +18,6 @@ export default function(gulp, config) {
   // This empty stream might seem like a hack, but we need to specify all of our files through
   // the `entry` option of webpack. Otherwise, it ignores whatever file(s) are placed in here.
   return gulp.src('')
-    .pipe(plumber({
-      errorHandler(error) {
-        console.log(error);
-        this.emit('end');
-      }
-    }))
     .pipe(webpackStream({
       watch: true,
       entry: allFiles,
