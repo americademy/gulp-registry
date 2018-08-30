@@ -1,51 +1,47 @@
-![tumblr_inline_mldraud8jx1qz4rgp](https://cloud.githubusercontent.com/assets/1096881/21282631/c39f2c80-c3bc-11e6-8304-a99667222549.gif)
-
 # Milk Carton
-A task runner to create, develop, test, and deploy code
+Company-wide Gulp tasks for legacy projects.
 
 ## Installation
 
 To install for use in your project:
 
-```sh
-$ npm install -g milk-carton
-```
+    npm install --save-dev @codeverse/gulp-registry
 
 ## Usage
 
-Use these commands in the root of your project
+Add these lines near the top of your `gulpfile`:
 
-```sh
-# To view all tasks:
-$ milk --help
-
-# To build (alias: b)
-$ milk build
-
-# Run a local server for testing (alias: s)
-$ milk server
-```
+        var codeverseTasks = require('@codeverse/gulp-registry');
+        gulp.registry(codeverseTasks);
 
 ### Configuration
 
-You can optionally include a `milk.json` file in the root of your project to over-ride any of milks [default settings](src/config.js). Ensure your `milk.json` file is [valid JSON](https://jsonlint.com/).
+You can optionally include a `milk.json` file in the root of your project to over-ride any of milks
+[default settings](src/config.js).
 
 see [src/config.js](src/config.js) for all available options.
 
-## Development
-To contribute to milk-carton fork this repository and create a pull request with details regarding your proposed changes.
-Requirements: [yarn](https://yarnpkg.com/en/)
+### Migrating from Milk Carton v0.0.x to @codeverse/gulp-registry v0.1
+Gulp 4.0.0 fundamentally changed the architecture of Gulp tasks, in such a way as to make a
+"forked-gulp" CLI tool infeasible. If a project's current npm `"scripts"` use `milk` commands, you
+can upgrade to Gulp 4 as follows:
 
-```sh
-# Install yarn packages
-$ yarn install
+1. Switch to this project:
 
-# To build in development
-$ yarn run build --watch
+        npm uninstall milk-carton
+        npm install --save-dev @codeverse/gulp-registry
 
-# To build for release
-$ yarn run build
-```
+2. Add a bare Gulpfile with contents analogous to the following:
+
+        var gulp = require('gulp');
+        var codeverseTasks = require('@codeverse/gulp-registry');
+        
+        gulp.registry(codeverseTasks);
+        
+        export default gulp.series('lint', 'build', 'test')
+
+3. Replace the npm scripts in `package.json`; `milk X` can simply become `gulp X`.
+
 
 ## Contributors
 This project is build by and for [Americademy, Inc](https://www.americademy.com/) for use in all products developed for [Codeverse](https://www.codeverse.com/)
