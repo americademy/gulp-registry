@@ -29,18 +29,26 @@ can upgrade to Gulp 4 as follows:
 1. Switch to this project:
 
         npm uninstall milk-carton
-        npm install --save-dev @codeverse/gulp-registry
+        npm install --save-dev gulp@4 @codeverse/gulp-registry
+        npm install --global gulp-cli # If you haven't done so previously
 
 2. Add a bare Gulpfile with contents analogous to the following:
 
+        // Gulpfile.babel.js
         var gulp = require('gulp');
         var codeverseTasks = require('@codeverse/gulp-registry');
         
         gulp.registry(codeverseTasks);
         
-        export default gulp.series('lint', 'build', 'test')
+        export default gulp.series('lint', 'build', 'test');
 
-3. Replace the npm scripts in `package.json`; `milk X` can simply become `gulp X`.
+3. Add at least a skeletal `.babelrc` to allow the Gulpfile to be written in modern syntax:
+
+        {
+          "presets": ["env"]
+        }
+
+4. Replace the npm scripts in `package.json`; `milk X` can simply become `gulp X`.
 
 
 ## Contributors
