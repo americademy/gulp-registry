@@ -1,6 +1,6 @@
 {
    "name": "milk-carton",
-   "version": "0.0.5-pre.2",
+   "version": "0.0.5-pre.3",
    "description": "A task runner to create, develop, test, and deploy code",
    "main": "lib/index.js",
    "author": "Dave Arel <davearel@gmail.com>",
