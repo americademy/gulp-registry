@@ -1,5 +1,8 @@
-var util = require('util');
-var DefaultRegistry = require('undertaker-registry');
+import fs from 'fs';
+import util from 'util';
+import path from 'path';
+import defaults from './config';
+import DefaultRegistry from 'undertaker-registry';
 
 
 function CodeverseGulpRegistry() {
@@ -30,11 +33,11 @@ CodeverseGulpRegistry.prototype.init = function(gulp) {
     // require gulp task and extract and bind the task function
     const task = require('./tasks/' + name);
     const fn = task.default.bind(this, gulp, config);
-    const deps = task.dependencies || [];
 
     // create gulp task
     gulp.task(name, fn);
   });
 };
 
-module.exports = new CodeverseGulpRegistry();
+
+export default new CodeverseGulpRegistry();
