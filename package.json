@@ -1,16 +1,13 @@
 {
-   "name": "milk-carton",
-   "version": "0.1.0-pre.0",
+   "name": "@codeverse/gulp-registry",
+   "version": "0.1.0-pre.1",
    "description": "A task runner to create, develop, test, and deploy code",
-   "main": "lib/index.js",
+   "main": "lib/registry.js",
    "author": "Dave Arel <davearel@gmail.com>",
    "homepage": "http://github.com/americademy/milk-carton",
    "repository": "git://github.com/americademy/milk-carton.git",
    "license": "MIT",
    "private": false,
-   "bin": {
-      "milk": "lib/index.js"
-   },
    "scripts": {
       "prepare": "babel src -d lib"
    },
