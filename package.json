@@ -9,12 +9,16 @@
    "license": "MIT",
    "private": false,
    "scripts": {
-      "prepare": "babel src -d lib"
+      "prepare": "babel src -d lib",
+      "test": "npm pack && bats test/**/*.bats"
    },
    "files": [
       "lib",
       "src"
    ],
+   "directories": {
+      "test": "test"
+   },
    "dependencies": {
       "babel-cli": "^6.26.0",
       "babel-core": "^6.26.3",
@@ -36,6 +40,7 @@
       "worker-loader": "^1.1.0"
    },
    "devDependencies": {
+      "bats": "^1.1.0",
       "gulp": "^4.0.0"
    }
 }
