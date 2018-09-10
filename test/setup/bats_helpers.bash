@@ -91,7 +91,7 @@ get_single_directory() {
 # `setup_individual_directory`), or via `eval_once_on_setup` (after `setup_single_directory`.)
 copy_node_modules() {
   if [[ -d "$TDIR" ]]; then
-    cp -r "$BATS_CWD/node_modules/" "$TDIR/"
+    cp -r "$BATS_CWD/node_modules/" "$TDIR/node_modules"
   else
     pute 'copy_node_modules must be called after one of the directory-setup functions!'
     exit 1
