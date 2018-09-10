@@ -12,13 +12,36 @@ setup() {
 
   cd "$TDIR"
   pute "Test directory: '$TDIR'"
+  setup_gulpfile
+}
+
+setup_gulpfile() {
+  cat <<'GULPFILE' >gulpfile.js
+const gulp = require('gulp');
+const codeverseTasks = require('@codeverse/gulp-registry');
+
+gulp.registry(codeverseTasks);
+
+GULPFILE
 }
 
 
 @test "... test setup ..." {
-  # noop
+  [ -d node_modules ]
+  [ -f gulpfile.js ]
+
+  run gulp --version
+  [ $status -eq 0 ]
+
+  echo "$output"
+  [[ "$output" == *"CLI version"* ]]
+  [[ "$output" == *"Local version"* ]]
 }
 
-@test "basic usage" {
-  gulp build
+@test "adds some Gulp tasks" {
+  run gulp --tasks-simple
+  echo "$output"
+  task_count="$(echo "$output" | wc -l)"
+  echo "$task_count"
+  [ "$task_count" -gt 1 ]
 }
