@@ -30,7 +30,7 @@ eval_once_on_setup() {
 # When included in the `setup()` for a testfile, this creates a new directory for each test, copying
 # the fixtures (if any) into that directory, and exports the path to that directory as `$TDIR`. Call
 # within `setup()`.
-setup_individual_directories() {
+setup_individual_directory() {
   filename="${BATS_TEST_FILENAME##*/}"
   TDIR="$BATS_TMPDIR/$filename-$BATS_TEST_NUMBER"
   pute "$TDIR"
@@ -49,15 +49,20 @@ setup_individual_directories() {
   mkdir -p "$TDIR" || exit 1
 
   export TDIR
-  cd "$TDIR"
+}
+
+# This prints the path to the directory prepared by `setup_individual_directory`.
+get_individual_directory() {
+  filename="${BATS_TEST_FILENAME##*/}"
+  TDIR="$BATS_TMPDIR/$filename"
+
+  puts "$TDIR"
 }
 
 # When included in the `setup()` for a testfile, this creates a new directory for the entire
-# testfile, copying the fixtures (if any) into that directory, and exports the path to that
-# directory as `$TDIR`. Call via `eval_once_on_setup`.
+# testfile, copying the fixtures (if any) into that directory. Call via `eval_once_on_setup`.
 setup_single_directory() {
-  filename="${BATS_TEST_FILENAME##*/}"
-  TDIR="$BATS_TMPDIR/$filename"
+  TDIR="$(get_single_directory)"
 
   # First, wipe out the results of any previous runs,
   if [[ -e "$TDIR" ]]; then
@@ -71,14 +76,19 @@ setup_single_directory() {
 
   # ... or we need to make the directory afresh.
   mkdir -p "$TDIR" || exit 1
+}
 
-  export TDIR
-  cd "$TDIR"
+# This prints the path to the directory prepared by `setup_single_directory`.
+get_single_directory() {
+  filename="${BATS_TEST_FILENAME##*/}"
+  TDIR="$BATS_TMPDIR/$filename"
+
+  puts "$TDIR"
 }
 
 
 # Copy the parent-projects' dependencies into the test directory. Call in `setup()` (after
-# `setup_individual_directories`), or via `eval_once_on_setup` (after `setup_single_directory`.)
+# `setup_individual_directory`), or via `eval_once_on_setup` (after `setup_single_directory`.)
 copy_node_modules() {
   if [[ -d "$TDIR" ]]; then
     cp -r "$BATS_CWD/node_modules/" "$TDIR/"
@@ -105,5 +115,6 @@ install_this_module() {
     puts ''
     exit 1
   fi
+  cd "$TDIR"
   npm install --no-audit --only=production "$BATS_CWD/$pack"
 }
