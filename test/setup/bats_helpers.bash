@@ -99,11 +99,9 @@ copy_node_modules() {
 }
 
 install_this_module() {
-  pack="$(
-    cd "$BATS_CWD"
-    'ls' *"-$npm_package_version.tgz" || true
-  )"
-  if [[ -z "$BATS_CWD/$pack" ]] || [[ ! -f "$BATS_CWD/$pack" ]]; then
+  cd "$BATS_CWD"
+  pack="$('ls' -- *"-$npm_package_version.tgz")"
+  if [[ -z "$pack" ]] || [[ ! -f "$BATS_CWD/$pack" ]]; then
     puts ''
     pute 'These tests require that `npm pack` be run before the test-suite.'
     pute 'Consider adding it to your npm "scripts":'
