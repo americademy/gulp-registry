@@ -1,5 +1,7 @@
 import fs  from 'fs';
 import path  from 'path';
+import _camelCase from 'lodash.camelcase';
+import parsePackageJsonName from 'parse-packagejson-name';
 import filter from 'gulp-filter';
 import rename from 'gulp-rename';
 import uglify from 'gulp-uglify';
@@ -11,17 +13,25 @@ import {logError, error} from '../utility';
 export let dependencies = [];
 
 // default task
-export default function(gulp, config) {
+export default function(gulp, pkg) {
+  const config = pkg.config;
+
+  const shortPkgName = parsePackageJsonName(pkg.name).fullName
+      , mainVar = config.build.mainVar || _camelCase(shortPkgName);
 
   // Choose a different version of webpack
   // otherwise null will use included version
-  let wpVersion = config.wpVersion || null;
+  const wpVersion = config.build.webpackVersion;
 
   // choose the destination folder
-  let destinationFolder = path.dirname(config.mainFile);
+  const destinationFolder = pkg.directories.dist;
 
   // determine the initial source file
-  let sourceFile = path.join(config.paths.src, config.entryFileName + '.js');
+  const sourceEntryPath = config.build.entryFile
+    ? path.join(pkg.directories.lib, config.build.entryFile)
+    : pkg.main;
+
+  const sourceEntryFilename = path.basename(sourceEntryPath);
 
   // webpack rules
   let rules = [{
@@ -54,32 +64,29 @@ export default function(gulp, config) {
 
   }]
 
-  // append custom rules
-  .concat(config.rules);
-
   // webpack options
   let options = {
 
     output: {
 
       // output paths
-      path: `/${config.paths.build}/`,
-      publicPath: `/${config.paths.build}/`,
+      path: `/${pkg.directories.dist}/`,
+      publicPath: `/${pkg.directories.dist}/`,
 
       // destination file name
-      filename: config.exportFileName + '.js',
+      filename: shortPkgName + '.js',
 
       // configure the output library type
-      libraryTarget: config.libraryTarget,
+      libraryTarget: config.build.libraryTarget,
 
       // will name the AMD module of the UMD build
       umdNamedDefine: true,
 
       // configure the output variable
-      library: config.mainVarName,
+      library: mainVar,
 
       // prefix module filename to avoid duplicates among many of our projects
-      devtoolModuleFilenameTemplate: `webpack:///${config.mainVarName}[resource-path]`
+      devtoolModuleFilenameTemplate: `webpack:///${shortPkgName}/[resource-path]`
 
     },
 
@@ -87,7 +94,7 @@ export default function(gulp, config) {
     module: { rules },
 
     // enable source-maps
-    devtool: 'source-map'
+    devtool: config.build.devtool
 
   };
 
@@ -97,7 +104,7 @@ export default function(gulp, config) {
     this.emit('end');
   };
 
-  return gulp.src(sourceFile)
+  return gulp.src(sourceEntryPath)
 
     // stream webpack build
     .pipe(webpackStream(options, wpVersion))

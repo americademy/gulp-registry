@@ -1,7 +1,8 @@
 import fs from 'fs';
 import util from 'util';
 import path from 'path';
-import defaults from './config';
+import _merge from 'lodash.merge';
+import pkgDefaults from './config.json';
 import DefaultRegistry from 'undertaker-registry';
 
 
@@ -11,19 +12,20 @@ function CodeverseGulpRegistry() {
 util.inherits(CodeverseGulpRegistry, DefaultRegistry);
 
 CodeverseGulpRegistry.prototype.init = function(gulp) {
-  // get the local milk config file if it exists
-  const configPath = `${process.cwd()}/milk.json`;
-  let overrides = false;
-  if (fs.existsSync(configPath)) {
-    overrides = require(configPath);
+  const pkgPath = `${process.cwd()}/package.json`;
+  if (!fs.existsSync(pkgPath)) {
+    throw new Error("This project has no `package.json` yet!")
   }
 
-  // merge configuration if we have overrides
-  const config = overrides ? Object.assign(defaults, overrides || {}) : defaults;
+  const overrides = require(pkgPath)
+      , pkg = _merge(pkgDefaults, overrides);
 
   // Grab all the tasks
   const tasks = fs
     .readdirSync(path.join(__dirname, 'tasks'))
+    .filter(function(file) {
+      return path.extname(file) === '.js'
+    })
     .map(function(file) {
       return file.replace('.js', '');
     });
@@ -32,7 +34,7 @@ CodeverseGulpRegistry.prototype.init = function(gulp) {
   tasks.forEach(function(name) {
     // require gulp task and extract and bind the task function
     const task = require('./tasks/' + name);
-    const fn = task.default.bind(this, gulp, config);
+    const fn = task.default.bind(this, gulp, pkg);
 
     // create gulp task
     gulp.task(name, fn);

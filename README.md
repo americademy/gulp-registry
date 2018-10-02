@@ -16,10 +16,9 @@ Add these lines near the top of your `gulpfile`:
 
 ### Configuration
 
-You can optionally include a `milk.json` file in the root of your project to over-ride any of milks
-[default settings](src/config.js).
-
-see [src/config.js](src/config.js) for all available options.
+The tasks contained herein are configured by entries in each project's `package.json`. See
+[`src/config.json`](src/config.json) for example configuration options; although most will be
+automatically deduced from the usual contents of `package.json`.
 
 ### Migrating from Milk Carton v0.0.x to @codeverse/gulp-registry v0.1
 Gulp 4.0.0 fundamentally changed the architecture of Gulp tasks, in such a way as to make a

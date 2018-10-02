@@ -9,7 +9,7 @@
    "license": "MIT",
    "private": false,
    "scripts": {
-      "prepare": "babel src -d lib",
+      "prepare": "babel src --out-dir lib --copy-files --source-maps true",
       "test": "npm pack && bats test/**/*.bats"
    },
    "files": [
@@ -36,6 +36,9 @@
       "gulp-uglify": "^3.0.0",
       "gulp-util": "^3.0.8",
       "json-loader": "^0.5.7",
+      "lodash.camelcase": "^4.3.0",
+      "lodash.merge": "^4.6.1",
+      "parse-packagejson-name": "^1.0.1",
       "undertaker-registry": "^1.0.1",
       "webpack-stream": "^4.0.2",
       "worker-loader": "^1.1.0"

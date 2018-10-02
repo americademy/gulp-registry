@@ -1,0 +1,16 @@
+{
+  "directories": {
+    "lib": "src",
+    "dist": "dist",
+    "test": "test"
+  },
+  "config": {
+    "build": {
+      "webpackVersion": null,
+      "libraryTarget": "umd",
+      "devtool": "source-map",
+      "entryFile": null,
+      "mainVar": null
+    }
+  }
+}
