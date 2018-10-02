@@ -14,7 +14,7 @@ util.inherits(CodeverseGulpRegistry, DefaultRegistry);
 CodeverseGulpRegistry.prototype.init = function(gulp) {
   const pkgPath = `${process.cwd()}/package.json`;
   if (!fs.existsSync(pkgPath)) {
-    throw new Error("This project has no `package.json` yet!")
+    throw new Error('This project has no `package.json` yet!')
   }
 
   const overrides = require(pkgPath)

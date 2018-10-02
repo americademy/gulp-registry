@@ -9,8 +9,9 @@
    "license": "MIT",
    "private": false,
    "scripts": {
-      "prepare": "babel src --out-dir lib --copy-files --source-maps true",
-      "test": "npm pack && bats test/**/*.bats"
+      "test": "npm pack && bats test/**/*.bats",
+      "lint": "eslint --max-warnings 0 src",
+      "prepare": "babel src --out-dir lib --copy-files --source-maps true"
    },
    "files": [
       "lib",
