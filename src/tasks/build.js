@@ -48,7 +48,6 @@ export default function(gulp, pkg) {
     // optimize by caching
     options: {
       cacheDirectory: `${process.cwd()}/tmp`,
-      presets: ["env"]
     }
 
   }, {
