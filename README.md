@@ -1,4 +1,4 @@
-# Milk Carton
+# Codeverse Gulp Registry
 Company-wide Gulp tasks for legacy projects.
 
 ## Installation
