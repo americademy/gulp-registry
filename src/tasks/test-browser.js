@@ -42,7 +42,7 @@ export default function(gulp, pkg) {
           // This allows the test setup scripts to load `package.json`
           { test: /\.json$/, exclude: /node_modules/, loader: 'json-loader' },
           // This allows the test setup scripts to load `package.json`
-          { test: /src\/workers\/.js$/, exclude: /node_modules/, loader: 'worker-loader' }
+          { test: /\.worker\/.js$/, exclude: /node_modules/, loader: 'worker-loader' }
         ]
       },
       plugins: [
@@ -50,8 +50,8 @@ export default function(gulp, pkg) {
         // them into a single chunk.
         new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 })
       ],
-      devtool: 'inline-source-map'
-    }, null, function() {
+      devtool: 'eval-source-map'
+    }, null, function cb() {
       if (firstBuild) {
         livereload.listen({port: 35729, host: 'localhost', start: true});
         gulp.watch(watchFiles).on('all', build);
