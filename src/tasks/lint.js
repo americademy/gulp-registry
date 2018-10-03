@@ -14,6 +14,5 @@ export default function(gulp, config) {
   return gulp.src(files)
     .pipe(eslint())
     .pipe(eslint.format())
-    .pipe(eslint.failOnError())
     .on('error', logError);
 };
