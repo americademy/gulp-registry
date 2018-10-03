@@ -44,7 +44,7 @@ export default function(gulp, pkg) {
 
     // optimize by caching
     options: {
-      cacheDirectory: `${process.cwd()}/tmp`,
+      cacheDirectory: path.join(process.cwd(), pkg.directories.tmp),
     }
 
   }]
