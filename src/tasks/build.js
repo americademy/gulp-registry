@@ -9,9 +9,6 @@ import sourcemaps from 'gulp-sourcemaps';
 import webpackStream from 'webpack-stream';
 import {logError, error} from '../utility';
 
-// dependencies will be run prior to the default task
-export let dependencies = [];
-
 // default task
 export default function(gulp, pkg) {
   const config = pkg.config;

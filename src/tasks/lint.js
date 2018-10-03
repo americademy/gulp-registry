@@ -1,9 +1,6 @@
 import eslint from 'gulp-eslint';
 import {logError} from '../utility';
 
-// dependencies will be run prior to the default task
-export let dependencies = [];
-
 // files to watch
 const files = [
   'src/**/*.js',

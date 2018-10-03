@@ -1,6 +1,3 @@
-// dependencies tasks will be run prior to the default task
-export let dependencies = [];
-
 // files to watch
 const watchFiles = [
   './src/**/*',

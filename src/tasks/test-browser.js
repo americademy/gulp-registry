@@ -7,9 +7,6 @@ import webpackStream from 'webpack-stream';
 import buildTask from './build.js';
 
 
-// dependencies will be run prior to the default task
-export let dependencies = [];
-
 // default task
 export default function(gulp, config) {
   const build = buildTask.bind(this, gulp, config);
