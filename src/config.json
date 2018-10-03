@@ -2,7 +2,8 @@
   "directories": {
     "lib": "src",
     "dist": "dist",
-    "test": "test"
+    "test": "test",
+    "tmp": "tmp"
   },
   "config": {
     "build": {
@@ -11,6 +12,7 @@
       "devtool": "source-map",
       "entryFile": null,
       "mainVar": null
-    }
+    },
+    "clean": null
   }
 }
