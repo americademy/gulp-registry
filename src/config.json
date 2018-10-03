@@ -7,7 +7,6 @@
   },
   "config": {
     "build": {
-      "webpackVersion": null,
       "libraryTarget": "umd",
       "devtool": "source-map",
       "entryFile": null,

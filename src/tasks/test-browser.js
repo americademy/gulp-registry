@@ -8,7 +8,7 @@ import buildTask from './build.js';
 
 
 // default task
-export default function(gulp, pkg) {
+export default function testBrowser(gulp, pkg) {
   const build = buildTask.bind(this, gulp, pkg);
 
   const { directories: dirs, config } = pkg;
@@ -51,7 +51,7 @@ export default function(gulp, pkg) {
         new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 })
       ],
       devtool: 'eval-source-map'
-    }, null, function cb() {
+    }, webpack, function cb() {
       if (firstBuild) {
         livereload.listen({port: 35729, host: 'localhost', start: true});
         gulp.watch(watchFiles).on('all', build);

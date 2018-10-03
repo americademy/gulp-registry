@@ -1,7 +1,7 @@
 import eslint from 'gulp-eslint';
 import {logError} from '../utility';
 
-// files to watch
+// files to lint
 const files = [
   'src/**/*.js',
   'test/**/*.js',

@@ -4,7 +4,7 @@ import connect from 'gulp-connect';
 let firstBuild = true;
 
 // default task
-export default function(gulp, config) {
+export default function startServer(gulp, config) {
 
   // configuration based on initial build or not
   let startOrReload = firstBuild ? 'server' : 'reload';

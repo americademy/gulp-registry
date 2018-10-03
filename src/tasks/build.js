@@ -6,6 +6,7 @@ import filter from 'gulp-filter';
 import rename from 'gulp-rename';
 import uglify from 'gulp-uglify';
 import sourcemaps from 'gulp-sourcemaps';
+import webpack from 'webpack';
 import webpackStream from 'webpack-stream';
 import {logError, error} from '../utility';
 
@@ -15,10 +16,6 @@ export default function(gulp, pkg) {
 
   const shortPkgName = parsePackageJsonName(pkg.name).fullName
       , mainVar = config.build.mainVar || _camelCase(shortPkgName);
-
-  // Choose a different version of webpack
-  // otherwise null will use included version
-  const wpVersion = config.build.webpackVersion;
 
   // choose the destination folder
   const destinationFolder = pkg.directories.dist;
@@ -86,7 +83,7 @@ export default function(gulp, pkg) {
   return gulp.src(sourceEntryPath)
 
     // stream webpack build
-    .pipe(webpackStream(options, wpVersion))
+    .pipe(webpackStream(options, webpack))
 
     // add compiled output to the destination folder
     .pipe(gulp.dest(destinationFolder))
