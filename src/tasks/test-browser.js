@@ -8,18 +8,18 @@ import buildTask from './build.js';
 
 
 // default task
-export default function(gulp, config) {
-  const build = buildTask.bind(this, gulp, config);
+export default function(gulp, pkg) {
+  const build = buildTask.bind(this, gulp, pkg);
 
-  const { paths } = config;
-  const watchFiles = [paths.src+'/**/*', paths.tests+'/**/*', 'package.json', '**/.eslintrc.json'];
+  const { directories: dirs, config } = pkg;
+  const watchFiles = [dirs.src+'/**/*', dirs.test+'/**/*', 'package.json', '**/.eslintrc.json'];
 
   // Our testing bundle is made up of our unit tests, which
   // should individually load up pieces of our application.
   // We also include the browser setup file.
-  const unitTestFiles = glob.sync(`./${paths.tests}/unit/**/*.js`);
-  const manualTestFiles = glob.sync(`./${paths.tests}/manual/**/*.js`);
-  const allFiles = [`./${paths.tests}/setup/browser.js`, `./${paths.tests}/setup/manual.js`].concat(manualTestFiles).concat(unitTestFiles);
+  const unitTestFiles = glob.sync(`./${dirs.test}/unit/**/*.js`);
+  const manualTestFiles = glob.sync(`./${dirs.test}/manual/**/*.js`);
+  const allFiles = [`./${dirs.test}/setup/browser.js`, `./${dirs.test}/setup/manual.js`].concat(manualTestFiles).concat(unitTestFiles);
   console.log('Test-files loaded:', allFiles.length);
   console.log('Test-files:', allFiles);
 
@@ -62,5 +62,5 @@ export default function(gulp, config) {
       }
       firstBuild = false;
     }))
-    .pipe(gulp.dest('./tmp'));
+    .pipe(gulp.dest(dirs.tmp));
 }
