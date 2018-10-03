@@ -12,6 +12,9 @@
       "entryFile": null,
       "mainVar": null
     },
-    "clean": null
+    "clean": null,
+    "watch": {
+
+    }
   }
 }

@@ -1,18 +1,13 @@
-// files to watch
-const watchFiles = [
-  './src/**/*',
-  './objects/**/*.js',
-  './test/**/*',
-  './package.json',
-  './gulpfile.babel.js',
-  './**/.eslintrc',
-
-  // ignore
-  '!./src/objects.js'
-];
-
 // default task
-export default function(gulp, config) {
+export default function watch(gulp, pkg) {
+  const { directories: dirs, config } = pkg;
+
+  // files to watch
+  const watchFiles = [
+    `./${dirs.lib }/**/*`,
+    `./${dirs.test}/**/*`,
+  ];
+
   // return gulp.watch(watchFiles, ['test']);
   return gulp.watch(watchFiles, ['build']);
 };
