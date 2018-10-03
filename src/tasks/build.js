@@ -83,12 +83,6 @@ export default function(gulp, pkg) {
 
   };
 
-  // plumbing error
-  function errorHandler(error, stats) {
-    logError(error);
-    this.emit('end');
-  };
-
   return gulp.src(sourceEntryPath)
 
     // stream webpack build
