@@ -50,17 +50,6 @@ export default function(gulp, pkg) {
       cacheDirectory: `${process.cwd()}/tmp`,
     }
 
-  }, {
-
-    // all json files for configuration
-    test: /\.json$/,
-
-    // exclude node modules or bower components
-    exclude: /(node_modules|bower_components)/,
-
-    // https://github.com/webpack-contrib/json-loader
-    loader: 'json-loader'
-
   }]
 
   // webpack options

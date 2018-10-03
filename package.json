@@ -36,7 +36,6 @@
       "gulp-sourcemaps": "^2.6.4",
       "gulp-uglify": "^3.0.0",
       "gulp-util": "^3.0.8",
-      "json-loader": "^0.5.7",
       "lodash.camelcase": "^4.3.0",
       "lodash.merge": "^4.6.1",
       "parse-packagejson-name": "^1.0.1",
