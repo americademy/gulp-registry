@@ -4,8 +4,8 @@
    "description": "A task runner to create, develop, test, and deploy code",
    "main": "lib/registry.js",
    "contributors": [
-     "Dave Arel <dave@codeverse.com>",
-     "ELLIOTTCABLE <ec@codeverse.com>"
+      "Dave Arel <dave@codeverse.com>",
+      "ELLIOTTCABLE <ec@codeverse.com>"
    ],
    "homepage": "http://github.com/americademy/milk-carton",
    "repository": "git://github.com/americademy/milk-carton.git",
@@ -30,6 +30,7 @@
       "@babel/preset-env": "^7.1.0",
       "babel-eslint": "^10.0.1",
       "babel-loader": "^8.0.4",
+      "camelcase": "^5.0.0",
       "gulp-connect": "^5.5.0",
       "gulp-eslint": "^5.0.0",
       "gulp-filter": "^5.1.0",
@@ -40,7 +41,6 @@
       "gulp-sourcemaps": "^2.6.4",
       "gulp-uglify": "^3.0.0",
       "gulp-util": "^3.0.8",
-      "lodash.camelcase": "^4.3.0",
       "lodash.merge": "^4.6.1",
       "parse-packagejson-name": "^1.0.1",
       "undertaker-registry": "^1.0.1",

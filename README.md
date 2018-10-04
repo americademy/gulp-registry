@@ -66,7 +66,7 @@ Breaking changes include further updating of developer tools, and a new config f
    One particular breaking change with the configuration, is that the package-name is now used
    (after camelCasing) as the default variable under which to expose the entry package — for
    instance, what was previously `new global['physics-engine'].Creator(...)` will now be exposed as
-   `new physicsEngine.Creator(...)`. (FIXME: This should be `PhysicsEngine`, oops!)
+   `new PhysicsEngine.Creator(...)`.
 
 #### v0.99
 

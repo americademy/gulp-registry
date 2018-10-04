@@ -1,6 +1,6 @@
 import fs  from 'fs';
 import path  from 'path';
-import _camelCase from 'lodash.camelcase';
+import camelCase from 'camelcase';
 import parsePackageJsonName from 'parse-packagejson-name';
 import filter from 'gulp-filter';
 import rename from 'gulp-rename';
@@ -15,7 +15,7 @@ export default function(gulp, pkg) {
   const config = pkg.config;
 
   const shortPkgName = parsePackageJsonName(pkg.name).fullName
-      , mainVar = config.build.mainVar || _camelCase(shortPkgName);
+      , mainVar = config.build.mainVar || _camelCase(shortPkgName, {pascalCase: true});
 
   // choose the destination folder
   const destinationFolder = pkg.directories.dist;
