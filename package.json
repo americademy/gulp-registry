@@ -11,6 +11,7 @@
    "scripts": {
       "test": "npm pack && bats test/**/*.bats",
       "lint": "eslint --max-warnings 0 src",
+      "build": "npm run prepare",
       "prepare": "babel src --out-dir lib --copy-files --source-maps true"
    },
    "files": [
