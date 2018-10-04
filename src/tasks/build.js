@@ -15,7 +15,7 @@ export default function(gulp, pkg) {
   const config = pkg.config;
 
   const shortPkgName = parsePackageJsonName(pkg.name).fullName
-      , mainVar = config.build.mainVar || _camelCase(shortPkgName, {pascalCase: true});
+      , mainVar = config.build.mainVar || camelCase(shortPkgName, {pascalCase: true});
 
   // choose the destination folder
   const destinationFolder = pkg.directories.dist;
