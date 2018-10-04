@@ -3,7 +3,10 @@
    "version": "0.100.0-pre.3",
    "description": "A task runner to create, develop, test, and deploy code",
    "main": "lib/registry.js",
-   "author": "Dave Arel <davearel@gmail.com>",
+   "contributors": [
+     "Dave Arel <dave@codeverse.com>",
+     "ELLIOTTCABLE <ec@codeverse.com>"
+   ],
    "homepage": "http://github.com/americademy/milk-carton",
    "repository": "git://github.com/americademy/milk-carton.git",
    "license": "MIT",
