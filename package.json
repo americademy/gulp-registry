@@ -1,6 +1,6 @@
 {
    "name": "@codeverse/gulp-registry",
-   "version": "0.100.0-pre.2",
+   "version": "0.100.0-pre.3",
    "description": "A task runner to create, develop, test, and deploy code",
    "main": "lib/registry.js",
    "author": "Dave Arel <davearel@gmail.com>",
