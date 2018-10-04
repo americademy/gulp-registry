@@ -24,8 +24,8 @@
       "babel-cli": "^6.26.0",
       "babel-core": "^6.26.3",
       "babel-eslint": "^7.2.0",
-      "babel-loader": "^7.1.0 <8.0.0",
-      "babel-preset-env": "^1.6.1",
+      "babel-loader": "^7.1.5",
+      "babel-preset-env": "^1.7.0",
       "gulp-connect": "^5.5.0",
       "gulp-eslint": "^5.0.0",
       "gulp-filter": "^5.1.0",
@@ -40,8 +40,9 @@
       "lodash.merge": "^4.6.1",
       "parse-packagejson-name": "^1.0.1",
       "undertaker-registry": "^1.0.1",
-      "webpack-stream": "^4.0.2",
-      "worker-loader": "^1.1.0"
+      "webpack": "^4.20.2",
+      "webpack-stream": "^5.1.1",
+      "worker-loader": "^2.0.0"
    },
    "peerDependencies": {
       "gulp": "^4.0.0",
