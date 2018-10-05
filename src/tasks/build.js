@@ -12,17 +12,17 @@ import {logError, error} from '../utility';
 
 // default task
 export default function(gulp, pkg) {
-  const config = pkg.config;
+  const { directories: dirs, config } = pkg;
 
   const shortPkgName = parsePackageJsonName(pkg.name).fullName
       , mainVar = config.build.mainVar || camelCase(shortPkgName, {pascalCase: true});
 
   // choose the destination folder
-  const destinationFolder = pkg.directories.dist;
+  const destinationFolder = dirs.dist;
 
   // determine the initial source file
   const sourceEntryPath = config.build.entryFile
-    ? path.join(pkg.directories.lib, config.build.entryFile)
+    ? path.join(dirs.lib, config.build.entryFile)
     : pkg.main;
 
   const sourceEntryFilename = path.basename(sourceEntryPath);
@@ -41,7 +41,7 @@ export default function(gulp, pkg) {
 
     // optimize by caching
     options: {
-      cacheDirectory: path.join(process.cwd(), pkg.directories.tmp),
+      cacheDirectory: path.join(process.cwd(), dirs.tmp),
     }
 
   }]
@@ -52,8 +52,8 @@ export default function(gulp, pkg) {
     output: {
 
       // output paths
-      path: `/${pkg.directories.dist}/`,
-      publicPath: `/${pkg.directories.dist}/`,
+      path: `/${dirs.dist}/`,
+      publicPath: `/${dirs.dist}/`,
 
       // destination file name
       filename: shortPkgName + '.js',
