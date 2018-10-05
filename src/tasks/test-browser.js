@@ -38,11 +38,9 @@ export default function testBrowser(gulp, pkg) {
         filename: '__spec-build.js',
       },
       module: {
-        loaders: [
+        rules: [
           // This is what allows us to author in future JavaScript
-          { test: /\.js$/, exclude: /(node_modules|src\/workers)/, loader: 'babel-loader' },
-          // This allows the test setup scripts to load `package.json`
-          { test: /\.json$/, exclude: /node_modules/, loader: 'json-loader' },
+          { test: /\.js$/, exclude: /(node_modules|\.worker\.js$)/, loader: 'babel-loader' },
           // This allows the test setup scripts to load `package.json`
           { test: /\.worker\/.js$/, exclude: /node_modules/, loader: 'worker-loader' }
         ]
