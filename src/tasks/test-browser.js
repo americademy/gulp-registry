@@ -32,6 +32,8 @@ export default function testBrowser(gulp, pkg) {
     .pipe(webpackStream({
       watch: true,
       entry: allFiles,
+      mode: 'development',
+      devtool: 'eval-source-map',
       output: {
         filename: '__spec-build.js',
       },
@@ -49,8 +51,7 @@ export default function testBrowser(gulp, pkg) {
         // By default, webpack does `n=>n` compilation with entry files. This concatenates
         // them into a single chunk.
         new webpack.optimize.LimitChunkCountPlugin({ maxChunks: 1 })
-      ],
-      devtool: 'eval-source-map'
+      ]
     }, webpack, function cb() {
       if (firstBuild) {
         livereload.listen({port: 35729, host: 'localhost', start: true});

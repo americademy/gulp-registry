@@ -48,6 +48,7 @@ export default function(gulp, pkg) {
 
   // webpack options
   let options = {
+    mode: 'development',
 
     output: {
 
@@ -68,7 +69,7 @@ export default function(gulp, pkg) {
       library: mainVar,
 
       // prefix module filename to avoid duplicates among many of our projects
-      devtoolModuleFilenameTemplate: `webpack:///${shortPkgName}/[resource-path]`
+      devtoolNamespace: shortPkgName
 
     },
 
