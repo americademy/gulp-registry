@@ -14,8 +14,16 @@ import {logError, error} from '../utility';
 export default function(gulp, pkg) {
   const { directories: dirs, config } = pkg;
 
+  // Configure defaults based on the usual contents of `package.json`
   const shortPkgName = parsePackageJsonName(pkg.name).fullName
-      , mainVar = config.build.mainVar || camelCase(shortPkgName, {pascalCase: true});
+      , libraryName = config.build.libraryName || camelCase(shortPkgName, {pascalCase: true});
+
+  // Provide 'all' as a short form of Webpack's default `_entry_return_` behaviour.
+  //
+  // See: <https://webpack.js.org/configuration/output/#output-libraryexport>
+  const libraryExport = config.build.libraryExport === 'all'
+    ? '_entry_return_'
+    : config.build.libraryExport;
 
   // choose the destination folder
   const destinationFolder = dirs.dist;
@@ -59,14 +67,17 @@ export default function(gulp, pkg) {
       // destination file name
       filename: shortPkgName + '.js',
 
-      // configure the output library type
+      // configure *how* to export our library
       libraryTarget: config.build.libraryTarget,
+
+      // choose *which value* to export as our library
+      libraryExport,
+
+      // choose *what name* to export the above-selected value as
+      library: libraryName,
 
       // will name the AMD module of the UMD build
       umdNamedDefine: true,
-
-      // configure the output variable
-      library: mainVar,
 
       // prefix module filename to avoid duplicates among many of our projects
       devtoolNamespace: shortPkgName

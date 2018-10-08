@@ -7,10 +7,11 @@
   },
   "config": {
     "build": {
+      "libraryName": null,
       "libraryTarget": "umd",
+      "libraryExport": "default",
       "devtool": "source-map",
-      "entryFile": null,
-      "mainVar": null
+      "entryFile": null
     },
     "clean": null,
     "watch": {
