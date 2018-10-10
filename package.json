@@ -1,6 +1,6 @@
 {
    "name": "@codeverse/gulp-registry",
-   "version": "0.100.0-pre.7",
+   "version": "0.100.0-pre.8",
    "description": "A task runner to create, develop, test, and deploy code",
    "main": "lib/registry.js",
    "contributors": [
