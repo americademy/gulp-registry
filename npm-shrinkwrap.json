@@ -779,9 +779,9 @@
          }
       },
       "@codeverse/eslint-config": {
-         "version": "2.0.0-pre.0",
-         "resolved": "https://registry.npmjs.org/@codeverse/eslint-config/-/eslint-config-2.0.0-pre.0.tgz",
-         "integrity": "sha512-iyHDOcHbP4l2tWnOE/yGPOUVkq6J9DK+oEY7RS9oIJUN4bmkNdR7L6Us+IbIYEL2Yrk8GtkfB6TsstI3nk2HDQ=="
+         "version": "2.0.0-pre.1",
+         "resolved": "https://registry.npmjs.org/@codeverse/eslint-config/-/eslint-config-2.0.0-pre.1.tgz",
+         "integrity": "sha512-LTVxKoqhiLK5jCXSloom7V/QWMUsqHX4LQy4ITezAkxdeMo8wT2OYucg3oqggC5SGhkE8YlSZxRAB3+4fWpRGw=="
       },
       "@gulp-sourcemaps/identity-map": {
          "version": "1.0.2",
