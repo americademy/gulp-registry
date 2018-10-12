@@ -15,15 +15,16 @@ export default function(gulp, pkg) {
   const { directories: dirs, config } = pkg;
 
   // Configure defaults based on the usual contents of `package.json`
-  const shortPkgName = parsePackageJsonName(pkg.name).fullName
-      , libraryName = config.build.libraryName || camelCase(shortPkgName, {pascalCase: true});
+  const shortPkgName = parsePackageJsonName(pkg.name).fullName,
+    libraryName =
+      config.build.libraryName || camelCase(shortPkgName, { pascalCase: true });
 
   // Provide 'all' as a short form of Webpack's default `_entry_return_` behaviour.
   //
-  // See: <https://webpack.js.org/configuration/output/#output-libraryexport>
-  const libraryExport = config.build.libraryExport === 'all'
-    ? '_entry_return_'
-    : config.build.libraryExport;
+  // See: <https://webpack.js.org/configuration/output/#output-libraryexport>,
+  //      <https://github.com/webpack/webpack/issues/8180>
+  const libraryExport =
+    config.build.libraryExport === 'all' ? undefined : config.build.libraryExport;
 
   // choose the destination folder
   const destinationFolder = dirs.dist;
