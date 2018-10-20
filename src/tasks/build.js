@@ -37,23 +37,23 @@ export default function(gulp, pkg) {
   const sourceEntryFilename = path.basename(sourceEntryPath);
 
   // webpack rules
-  let rules = [{
-
-    // all javascript files
-    test: /\.js$/,
-
-    // don't include node modules or bower components
-    exclude: /(node_modules|bower_components)/,
-
-    // use babel to compile for all js files
-    loader: 'babel-loader',
-
-    // optimize by caching
-    options: {
-      cacheDirectory: path.join(process.cwd(), dirs.tmp),
-    }
-
-  }]
+  let rules = [
+    // These are processed bottom-to-top; and if the 'inline' feature is to be used with
+    // worker-loader, Babel must have already run; thus this must come *before* babel-loader.
+    {
+      test: /\.worker\/.js$/,
+      loader: 'worker-loader',
+      options: { inline: true },
+    },
+    {
+      test: /\.js$/,
+      exclude: /(node_modules|bower_components)/,
+      loader: 'babel-loader',
+      options: {
+        cacheDirectory: path.join(process.cwd(), dirs.tmp),
+      }
+    },
+  ];
 
   // webpack options
   let options = {
