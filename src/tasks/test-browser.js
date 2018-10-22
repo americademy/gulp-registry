@@ -17,9 +17,14 @@ export default function testBrowser(gulp, pkg) {
   // Our testing bundle is made up of our unit tests, which
   // should individually load up pieces of our application.
   // We also include the browser setup file.
+  const unitSetupFile = glob.sync(`./${dirs.test}/setup/browser.js`);
+  const manualSetupFile = glob.sync(`./${dirs.test}/setup/manual.js`);
   const unitTestFiles = glob.sync(`./${dirs.test}/unit/**/*.js`);
   const manualTestFiles = glob.sync(`./${dirs.test}/manual/**/*.js`);
-  const allFiles = [`./${dirs.test}/setup/browser.js`, `./${dirs.test}/setup/manual.js`].concat(manualTestFiles).concat(unitTestFiles);
+  const allFiles = unitSetupFile
+    .concat(manualSetupFile)
+    .concat(manualTestFiles)
+    .concat(unitTestFiles);
   console.log('Test-files loaded:', allFiles.length);
   console.log('Test-files:', allFiles);
 
