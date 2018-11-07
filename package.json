@@ -7,8 +7,8 @@
       "Dave Arel <dave@codeverse.com>",
       "ELLIOTTCABLE <ec@codeverse.com>"
    ],
-   "homepage": "http://github.com/americademy/milk-carton",
-   "repository": "git://github.com/americademy/milk-carton.git",
+   "homepage": "http://github.com/americademy/gulp-registry",
+   "repository": "git://github.com/americademy/gulp-registry.git",
    "license": "MIT",
    "private": false,
    "scripts": {
