@@ -88,13 +88,13 @@ can upgrade to Gulp 4 as follows:
 2. Add a bare Gulpfile with contents analogous to the following:
 
         // Gulpfile.babel.js
-        var gulp = require('gulp');
-        var codeverseTasks = require('@codeverse/gulp-registry');
+        import gulp from 'gulp';
+        import codeverseTasks from '@codeverse/gulp-registry';
         
         gulp.registry(codeverseTasks);
         
         // Set up some sort of default task; as an example,
-        export default gulp.series('lint', 'build', 'test');
+        export default gulp.series('lint', 'build');
 
 3. Add at least a skeletal `.babelrc` to allow the Gulpfile to be written in modern syntax:
 
