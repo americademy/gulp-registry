@@ -70,9 +70,7 @@ function invokeMochaWebpack(configOptions = {}) {
   if (options.delay) { mochaWebpack.delay(); }
   if (options.growl) { mochaWebpack.growl(); }
 
-  return new Promise(resolve => setTimeout(function() {
-    resolve(options.watch ? mochaWebpack.watch() : mochaWebpack.run())
-  }, 2500));
+  return options.watch ? mochaWebpack.watch() : mochaWebpack.run();
 }
 
 
