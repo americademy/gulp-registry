@@ -5,7 +5,7 @@ import sourcemaps from 'gulp-sourcemaps';
 export default function(gulp, pkg) {
   const { directories: dirs, config } = pkg;
 
-  const inputs = `${dirs.src}/${config.build.transpileGlob}`;
+  const inputs = config.build.transpileGlobs.map(g => `${dirs.src}/${g}`);
 
   // choose the destination folder
   const destinationFolder = dirs.es5;

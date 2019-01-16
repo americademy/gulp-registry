@@ -8,7 +8,7 @@
   },
   "config": {
     "build": {
-      "transpileGlob": "**/*.{js,jsx,ts,tsx}",
+      "transpileGlobs": ["**/*.{js,jsx,ts,tsx}"],
       "libraryName": null,
       "libraryTarget": "umd",
       "libraryExport": "default",
