@@ -14,12 +14,6 @@ import {logError, error} from '../utility';
 export default function(gulp, pkg) {
   const { directories: dirs, config } = pkg;
 
-  // Deprecating `dirs.lib`, in favour of the unambiguous `dirs.src`/`dirs.es5`.
-  if (null != dirs.lib) {
-    console.warn('@codeverse/gulp-registry: Using directories.lib is deprecated; please provide .src and .es5 instead.');
-    dirs.src = dirs.lib;
-  }
-
   // Configure defaults based on the usual contents of `package.json`
   const shortPkgName = parsePackageJsonName(pkg.name).fullName
       , libraryName = config.build.libraryName || camelCase(shortPkgName, {pascalCase: true});

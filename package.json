@@ -34,6 +34,7 @@
       "camelcase": "^5.0.0",
       "chai": "^4.2.0",
       "del": "^3.0.0",
+      "gulp-babel": "^8.0.0",
       "gulp-connect": "^5.5.0",
       "gulp-eslint": "^5.0.0",
       "gulp-filter": "^5.1.0",
