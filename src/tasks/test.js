@@ -96,10 +96,12 @@ export default function(gulp, pkg) {
   // choose the destination folder
   const destinationFolder = dirs.dist;
 
-  // determine the initial source file
-  const sourceEntryPath = config.build.entryFile
+  // If not configured, we default to entering at the package's "main" file. If present, this will
+  // be the ES6-module file under "module", preferentially. See:
+  //   <https://github.com/dherman/defense-of-dot-js/blob/master/proposal.md#typical-usage>
+  const sourceEntryPath = null != config.build.entryFile
     ? path.join(dirs.src, config.build.entryFile)
-    : pkg.main;
+    : (null != pkg.module ? pkg.module : pkg.main);
 
   const sourceEntryFilename = path.basename(sourceEntryPath);
 
