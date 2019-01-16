@@ -51,6 +51,8 @@ export default function(gulp, pkg) {
         rootDir: dirs.src,
         outDir: destinationFolder,
         declaration: true,
+        isolatedModules: false,
+        noEmit: false,
         noEmitOnError: false,
       })());
 
