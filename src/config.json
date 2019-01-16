@@ -1,6 +1,7 @@
 {
   "directories": {
-    "lib": "src",
+    "src": "src",
+    "es5": "lib",
     "dist": "dist",
     "test": "test",
     "tmp": "tmp"

@@ -4,7 +4,7 @@ export default function watch(gulp, pkg) {
 
   // files to watch
   const watchFiles = [
-    `./${dirs.lib }/**/*`,
+    `./${dirs.src }/**/*`,
     `./${dirs.test}/**/*`,
   ];
 

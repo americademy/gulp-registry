@@ -77,6 +77,11 @@ function invokeMochaWebpack(configOptions = {}) {
 export default function(gulp, pkg) {
   const { directories: dirs, config } = pkg;
 
+  if (null != dirs.lib) {
+    console.warn('@codeverse/gulp-registry: Using directories.lib is deprecated; please provide .src and .es5 instead.');
+    dirs.src = dirs.lib;
+  }
+
   // Configure defaults based on the usual contents of `package.json`
   const shortPkgName = parsePackageJsonName(pkg.name).fullName
       , libraryName = config.build.libraryName || camelCase(shortPkgName, {pascalCase: true});
@@ -93,7 +98,7 @@ export default function(gulp, pkg) {
 
   // determine the initial source file
   const sourceEntryPath = config.build.entryFile
-    ? path.join(dirs.lib, config.build.entryFile)
+    ? path.join(dirs.src, config.build.entryFile)
     : pkg.main;
 
   const sourceEntryFilename = path.basename(sourceEntryPath);
