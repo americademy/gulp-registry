@@ -40,8 +40,8 @@ export default function(gulp, pkg) {
   // webpack rules
   let rules = [{
 
-    // all javascript files
-    test: /\.js$/,
+    // all javascript and TypeScript files
+    test: /(\.jsx?|\.tsx?)$/,
 
     // don't include node modules or bower components
     exclude: /(node_modules|bower_components)/,
@@ -59,6 +59,8 @@ export default function(gulp, pkg) {
   // webpack options
   let options = {
     mode: 'development',
+
+    resolve: { extensions: ['.wasm', '.ts', '.tsx', '.mjs', '.js', '.json'] },
 
     output: {
 
