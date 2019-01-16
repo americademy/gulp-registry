@@ -4,7 +4,7 @@ import connect from 'gulp-connect';
 import livereload from 'gulp-livereload';
 import webpackStream from 'webpack-stream';
 
-import buildTask from './build.js';
+import buildTask from './build-dist.js';
 
 
 // default task
