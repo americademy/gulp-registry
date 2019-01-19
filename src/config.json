@@ -16,6 +16,7 @@
       "entryFile": null
     },
     "clean": null,
+    "lint": ["src/**/*.{js,jsx,ts,tsx}", "test/**/*.{js,jsx,ts,tsx}", "gulpfile*.js"],
     "watch": {
 
     }

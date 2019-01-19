@@ -1,18 +1,15 @@
 import eslint from 'gulp-eslint';
-import {logError} from '../utility';
-
-// files to lint
-const files = [
-  'src/**/*.js',
-  'test/**/*.js',
-  'gulpfile.babel.js'
-];
+import friendlyFormatter from 'eslint-formatter-friendly';
+import { logError } from '../utility';
 
 // default task
-export default function(gulp, config) {
+export default function(gulp, pkg) {
+  const { config } = pkg;
+
   // Lint a set of files
-  return gulp.src(files)
-    .pipe(eslint())
-    .pipe(eslint.format())
-    .on('error', logError);
-};
+  return gulp
+    .src(config.lint)
+    .pipe(eslint({ warnFileIgnored: true }))
+    .pipe(eslint.format(friendlyFormatter))
+    .pipe(eslint.failAfterError());
+}
