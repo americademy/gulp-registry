@@ -19,7 +19,8 @@
    },
    "files": [
       "lib",
-      "src"
+      "src",
+      ".prettierrc.js"
    ],
    "directories": {
       "test": "test"
@@ -35,9 +36,10 @@
       "camelcase": "^5.0.0",
       "chai": "^4.2.0",
       "del": "^3.0.0",
-      "gulp-babel": "^8.0.0",
+      "enquirer": "^2.3.0",
       "eslint-config-prettier": "^3.1.0",
       "eslint-plugin-prettier": "^3.0.0",
+      "gulp-babel": "^8.0.0",
       "gulp-connect": "^5.5.0",
       "gulp-eslint": "^5.0.0",
       "gulp-filter": "^5.1.0",
@@ -57,10 +59,10 @@
       "mocha-webpack": "^2.0.0-beta.0",
       "parse-packagejson-name": "^1.0.1",
       "plugin-error": "^1.0.1",
-      "sinon": "^7.2.2",
-      "sinon-chai": "^3.3.0",
       "precise-commits": "^1.0.2",
       "prettier": "1.14.3",
+      "sinon": "^7.2.2",
+      "sinon-chai": "^3.3.0",
       "undertaker-registry": "^1.0.1",
       "webpack": "^4.20.2",
       "webpack-node-externals": "^1.7.2",
@@ -73,6 +75,7 @@
    },
    "devDependencies": {
       "bats": "^1.1.0",
+      "g-status": "^2.0.2",
       "gulp": "^4.0.0",
       "gulp-cli": "^2.0.1"
    }
