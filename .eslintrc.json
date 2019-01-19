@@ -1,14 +1,3 @@
 {
-  "parserOptions": {
-    "ecmaVersion": 2018,
-    "sourceType": "module"
-  },
-  "rules": {
-    "strict": 0,
-    "quotes": [1, "single"],
-    "no-undef": 2
-  },
-  "env": {
-    "node": true
-  }
+  "extends": "@codeverse"
 }

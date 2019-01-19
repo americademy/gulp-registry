@@ -44,10 +44,18 @@ export default function testBrowser(gulp, pkg) {
       },
       module: {
         rules: [
-          // This is what allows us to author in future JavaScript
-          { test: /\.js$/, exclude: /(node_modules|\.worker\.js$)/, loader: 'babel-loader' },
-          // This allows the test setup scripts to load `package.json`
-          { test: /\.worker\/.js$/, exclude: /node_modules/, loader: 'worker-loader' }
+          // These are processed bottom-to-top; and if the 'inline' feature is to be used with
+          // worker-loader, Babel must have already run; thus this must come *before* babel-loader.
+          {
+            test: /\.worker\/.js$/,
+            loader: 'worker-loader',
+            options: { inline: true },
+          },
+          {
+            test: /\.js$/,
+            exclude: /node_modules/,
+            loader: 'babel-loader',
+          },
         ]
       },
       plugins: [

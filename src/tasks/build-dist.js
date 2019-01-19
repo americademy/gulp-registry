@@ -15,15 +15,16 @@ export default function(gulp, pkg) {
   const { directories: dirs, config } = pkg;
 
   // Configure defaults based on the usual contents of `package.json`
-  const shortPkgName = parsePackageJsonName(pkg.name).fullName
-      , libraryName = config.build.libraryName || camelCase(shortPkgName, {pascalCase: true});
+  const shortPkgName = parsePackageJsonName(pkg.name).fullName,
+    libraryName =
+      config.build.libraryName || camelCase(shortPkgName, { pascalCase: true });
 
   // Provide 'all' as a short form of Webpack's default `_entry_return_` behaviour.
   //
-  // See: <https://webpack.js.org/configuration/output/#output-libraryexport>
-  const libraryExport = config.build.libraryExport === 'all'
-    ? '_entry_return_'
-    : config.build.libraryExport;
+  // See: <https://webpack.js.org/configuration/output/#output-libraryexport>,
+  //      <https://github.com/webpack/webpack/issues/8180>
+  const libraryExport =
+    config.build.libraryExport === 'all' ? undefined : config.build.libraryExport;
 
   // choose the destination folder
   const destinationFolder = dirs.dist;
@@ -38,23 +39,23 @@ export default function(gulp, pkg) {
   const sourceEntryFilename = path.basename(sourceEntryPath);
 
   // webpack rules
-  let rules = [{
-
-    // all javascript and TypeScript files
-    test: /(\.jsx?|\.tsx?)$/,
-
-    // don't include node modules or bower components
-    exclude: /(node_modules|bower_components)/,
-
-    // use babel to compile for all js files
-    loader: 'babel-loader',
-
-    // optimize by caching
-    options: {
-      cacheDirectory: path.join(process.cwd(), dirs.tmp),
-    }
-
-  }]
+  let rules = [
+    // These are processed bottom-to-top; and if the 'inline' feature is to be used with
+    // worker-loader, Babel must have already run; thus this must come *before* babel-loader.
+    {
+      test: /\.worker\.(jsx?|tsx?)$/,
+      loader: 'worker-loader',
+      options: { inline: true },
+    },
+    {
+      test: /\.(jsx?|tsx?)$/,
+      exclude: /(node_modules|bower_components)/,
+      loader: 'babel-loader',
+      options: {
+        cacheDirectory: path.join(process.cwd(), dirs.tmp),
+      }
+    },
+  ];
 
   // webpack options
   let options = {
