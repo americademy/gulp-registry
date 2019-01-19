@@ -50,7 +50,11 @@ export default function(gulp, pkg) {
       .pipe(gulpTypescript.createProject('tsconfig.json', {
         rootDir: dirs.src,
         outDir: destinationFolder,
+
+        // Override some settings from the tsconfig that are intended for typechecking purposes
         declaration: true,
+        allowJs: false,
+
         isolatedModules: false,
         noEmit: false,
         noEmitOnError: false,
