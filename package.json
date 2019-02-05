@@ -65,7 +65,6 @@
       "plugin-error": "^1.0.1",
       "precise-commits": "^1.0.2",
       "prettier": "1.14.3",
-      "reason-cli": "^3.3.3-macos-1",
       "sinon": "^7.2.2",
       "sinon-chai": "^3.3.0",
       "typescript": "^3.2.4",
@@ -83,5 +82,8 @@
       "bats": "^1.1.0",
       "gulp": "^4.0.0",
       "gulp-cli": "^2.0.1"
+   },
+   "optionalDependencies": {
+      "reason-cli": "*"
    }
 }
