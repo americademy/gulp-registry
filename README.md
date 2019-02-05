@@ -1,13 +1,16 @@
-# Codeverse Gulp Registry
-Company-wide Gulp tasks for legacy projects.
+Codeverse Gulp Registry
+-----------------------
+Company-wide test- and build-tooling.
 
-## Installation
+Installation
+============
 
 To install for use in your project:
 
     npm install --save-dev @codeverse/gulp-registry
 
-## Usage
+Usage
+=====
 
 Add these lines near the top of your `gulpfile`:
 
@@ -24,14 +27,16 @@ The tasks contained herein are configured by entries in each project's `package.
 [`src/config.json`](src/config.json) for example configuration options; although most will be
 automatically deduced from the usual contents of `package.json`.
 
-## Contributors
+Contributors
+============
 This project is build by and for [Americademy, Inc](https://www.americademy.com/) for use in all products developed for [Codeverse](https://www.codeverse.com/)
 
 * Americademy - [@americademy](https://github.com/americademy)
 * Dave Arel - [@davearel](https://github.com/davearel)
 * [@ELLIOTTCABLE](https://github.com/ELLIOTTCABLE)
 
-## License
+License
+=======
 
 ```js
 /*
