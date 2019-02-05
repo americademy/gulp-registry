@@ -14,6 +14,10 @@ Add these lines near the top of your `gulpfile`:
         var codeverseTasks = require('@codeverse/gulp-registry');
         gulp.registry(codeverseTasks);
 
+        // You can define new tasks below here; for instance, adding a single task that runs
+        // multiple other tasks:
+        gulp.task('build');
+
 ### Configuration
 
 The tasks contained herein are configured by entries in each project's `package.json`. See
