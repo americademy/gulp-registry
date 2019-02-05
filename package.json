@@ -35,7 +35,6 @@
       "babel-loader": "^8.0.4",
       "babel-plugin-bucklescript": "^0.5.3",
       "babel-types": "^6.26.0",
-      "bs-platform": "^4.0.18",
       "camelcase": "^5.0.0",
       "chai": "^4.2.0",
       "del": "^3.0.0",
@@ -83,8 +82,5 @@
       "bats": "^1.1.0",
       "gulp": "^4.0.0",
       "gulp-cli": "^2.0.1"
-   },
-   "optionalDependencies": {
-      "reason-cli": "*"
    }
 }
