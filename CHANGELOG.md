@@ -3,6 +3,49 @@ Changelog
 I really should be generating this programmatically.
 
 
+#### HEAD
+
+ - (new) [Prettier][] support
+
+    The Prettier configuration exposed by our organization configuration is supported by the
+    linting tasks provided herein. There's also a new `format` task, that uses
+    [`precise-commits`][precise] to apply Prettier to *only those parts of the codebase* that
+    you've changed in your working-directory, to help reduce diff-noise during large
+    style-refactors.
+
+ - (new config) Adding an ES5-compatible `lib/` build-product
+
+    The previous Webpack-powered `build` behaviour of producing a rolled-up, Web-facing
+    `dist/PROJECT.js` has been renamed to `build-dist`; and a new `build-lib` has been added that
+    invokes Babel directly (with no Webpack) to transparently compile, module-by-module, an
+    ES5-only build of the project into `lib/`. This is intended to be shipped to npm, but *not*
+    committed to Git.
+
+    ```diff
+    --- a/package.json
+    +++ b/package.json
+    @@ -8,6 +8,7 @@
+       "main": "src/index.js",
+       "files": [
+         "dist/**/*",
+    +    "lib/**/*",
+         "src/**/*"
+       ],
+    ```
+
+    Notably, `directories.lib` in the `package.json` has been deprecated in favour of
+    `directories.src` (for the previous meaning thereof) and `directories.lib` (for the naming of
+    the ES5-only `lib/`-analogous directory.)
+
+ - (new) Support for building statically-typed languages
+
+    This behaviour is opt-in; nothing needs to be changed until TypeScript or ML sources are added
+    to a project. Details of the usage are presented [in the README](./README.md)!
+
+  [Prettier]: <https://prettier.io/>
+  [precise]: <https://github.com/nrwl/precise-commits>
+
+
 #### v0.100
 
 Breaking changes include further updating of developer tools, and a new config format:
@@ -72,9 +115,9 @@ can upgrade to Gulp 4 as follows:
         // Gulpfile.babel.js
         import gulp from 'gulp';
         import codeverseTasks from '@codeverse/gulp-registry';
-        
+
         gulp.registry(codeverseTasks);
-        
+
         // Set up some sort of default task; as an example,
         export default gulp.series('lint', 'build');
 
